@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON_3</title>
+
+    <style>
+        .content {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .api {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            border: 2px solid;
+            padding: 10px;
+            width: 500px;
+        }
+
+        .name_Block {
+            color: rgb(247, 16, 16);
+        }
+
+        .text_Block {
+            text-align: left;
+        }
+
+        .image_Block {
+            width: 100%;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <body>
+        <!-- ____________________JSON____________________________________ -->
+
+        <!--
+ 1 Создать файл index.html
+ 2 Подключить data.js
+ 3 Добавить блок <div class="content"></div>
+ 4 Создать переменную data и добавить в нее JSON данные из файла data.js
+ 5 Вывести в консоль объект data
+ 6 С помощью foreach обойти массив data
+ 7 Вывести все ссылки изображений из данных в консоль
+ 8 Создать все необходимые заголовки, параграфы изображения (из данных json)
+ 9 Добавить все содержимое в блок контент
+ 10 * Добавить произвольные стили для добавленных элементов -->
+
+        <div class="content">
+            <script src="data.js"></script>
+            <script>
+                const contentEl = document.querySelector(".content");
+                const data = JSON.parse(dataInfo);
+                console.log(data);
+                data.forEach((element) => {
+                    const apiEl = document.createElement("div");
+                    apiEl.classList.add("api");
+                    contentEl.appendChild(apiEl);
+
+                    const nameApi = document.createElement("h2");
+                    nameApi.classList.add("name_Block");
+                    nameApi.textContent = element.name;
+                    apiEl.appendChild(nameApi);
+
+                    const textApi = document.createElement("p");
+                    textApi.classList.add("text_Block");
+                    textApi.textContent = element.text;
+                    apiEl.appendChild(textApi);
+
+                    const imageApi = document.createElement("img");
+                    imageApi.classList.add("image_Block");
+                    imageApi.src = element.url;
+                    apiEl.appendChild(imageApi);
+                });
+            </script>
+        </div>
+
+    </body>
+
+</html>
