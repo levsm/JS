@@ -57,34 +57,34 @@
  9 Добавить все содержимое в блок контент
  10 * Добавить произвольные стили для добавленных элементов -->
 
-        <div class="content">
-            <script src="data.js"></script>
-            <script>
-                const contentEl = document.querySelector(".content");
-                const data = JSON.parse(dataInfo);
-                console.log(data);
-                data.forEach((element) => {
-                    const apiEl = document.createElement("div");
-                    apiEl.classList.add("api");
-                    contentEl.appendChild(apiEl);
+        <div class="content"></div>
+        <script src="data.js"></script>
+        <script>
+            const contentEl = document.querySelector(".content");
+            const data = JSON.parse(dataInfo);
+            console.log(data);
+            data.forEach((element) => {
+                const apiEl = document.createElement("div");
+                apiEl.classList.add("api");
+                contentEl.appendChild(apiEl);
 
-                    const nameApi = document.createElement("h2");
-                    nameApi.classList.add("name_Block");
-                    nameApi.textContent = element.name;
-                    apiEl.appendChild(nameApi);
+                const nameApi = document.createElement("h2");
+                nameApi.classList.add("name_Block");
+                nameApi.textContent = element.name;
+                apiEl.appendChild(nameApi);
 
-                    const textApi = document.createElement("p");
-                    textApi.classList.add("text_Block");
-                    textApi.textContent = element.text;
-                    apiEl.appendChild(textApi);
+                const textApi = document.createElement("p");
+                textApi.classList.add("text_Block");
+                textApi.textContent = element.text;
+                apiEl.appendChild(textApi);
 
-                    const imageApi = document.createElement("img");
-                    imageApi.classList.add("image_Block");
-                    imageApi.src = element.url;
-                    apiEl.appendChild(imageApi);
-                });
-            </script>
-        </div>
+                const imageApi = document.createElement("img");
+                imageApi.classList.add("image_Block");
+                imageApi.src = element.url;
+                apiEl.appendChild(imageApi);
+            });
+        </script>
+
 
     </body>
 
