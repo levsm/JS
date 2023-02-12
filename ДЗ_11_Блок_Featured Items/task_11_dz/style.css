@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+  }
+
+   .center {
+    padding-left: calc(50% - 570px);
+    padding-right: calc(50% - 570px);
+  }
+
+
+  .main-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main-text {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 36px;
+    color: #222222;
+    margin-bottom: 6px;
+  }
+
+  .main-desc {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #9f9f9f;
+  }
+
+  .item-block {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(3, 33.33332%);
+    margin-top: 48px;
+    margin-bottom: 49px;
+    gap: 30px;
+
+
+  }
+
+  .item {
+    max-width: 360px;
+    max-height: 581px;
+    background-color: #f8f8f8;
+
+  }
+
+  .item-url {
+    text-decoration: none;
+
+  }
+
+  .item-img :hover, .button:hover {
+    outline: 1px solid #3f32f0;
+
+  }
+
+  .item-img-width {
+    width: 100%;
+    background-color: #3A3838;
+
+  }
+
+  .item-text {
+    padding-left: 15px;
+    padding-right: 25px;
+    margin-top: 24px;
+    margin-bottom: 50px;
+
+  }
+
+  .item-ellery {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    margin-bottom: 13px;
+    color:#000000
+  }
+
+  .item-desc {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 17px;
+    color: #5d5d5d;
+    margin-bottom: 18px;
+  }
+
+  .item-price {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color:#F16D7F;
+  }
+
+  .down {
+    display: flex;
+    justify-content: center;
+  }
+
+  .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color:#ffcdd5;
+    background-color:#FF6A6A;;
+    width: 211px;
+    height: 47px;
+    border: 1px solid #e75252;
+  }
+
+  .button-red {
+    text-decoration: none;
+     margin-bottom: 95px;
+  }
+
+  .button:hover {
+    color: rgb(255, 255, 255);
+    background-color: #fa4949;
+  }
