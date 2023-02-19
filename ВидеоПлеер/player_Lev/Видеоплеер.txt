@@ -1,0 +1,209 @@
+﻿Видео:
+
+https://youtu.be/y3jm3ARaebk
+https://youtu.be/YG9ofPaGzxo
+https://yandex.ru/video/preview/5607546185424881359
+
+https://mazwai.com/videvo_files/video/free/2017-12/small_watermarked/171124_C1_HD_012_preview.webm
+
+//  .button:hover {
+//    color: rgb(255, 255, 255);
+//    background-color: #fa4949;
+//  }
+// loop autoplay preload="true" // зацикливание // <video class="video" height="550" width="800" loop autoplay preload="true">
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="videoplayer">
+        <video class="video" height="550" width="800" loop autoplay preload="true">
+            <!-- Зацикливание видео -->
+            <source
+                src="G:\1_GeekBrains\ВЭБ\JavaScript\Семинары JS\Семинар_12_API\Задачи_11_Лекция\player_Lev\video\Y2mate.mx-30 .mp4"
+                type="video/mp4">
+            <span class="currentTime">
+
+        </video>
+        <div>Текущее время: <span id="timer">00:00</span></div> <!-- Таймер -->
+    </div>
+
+    <div class="controls">
+        <!-- <img class="play" src="img/play_icon.png" alt="play" class="play">   // 2й вариант Плей/Пауза
+        <img class="pause" src="img/pause_icon.png" alt="pause" class="pause"> -->
+        <input type="range" class="volume" min="0" max="1" step="0.01">
+        <!-- Полоска громкости, range -позволяют пользователю определить числовое значение, которое должно быть в пределах указанного промежутка -->
+
+        <input type="range" class="timing" min="1" step="0.001"> <!-- Ползунок -->
+
+        <div class="buttons">
+            <button class="vidbutton">Play</button>
+            <button class="rewind">&#60;< Назад</button>
+                    <button class="forward">Вперед >&#62;</button>
+        </div>
+    </div>
+
+    <script>
+        const videoEl = document.querySelector('.video');
+        /* const playVideoEl = document.querySelector('.play');     // 2й вариант Player/Pause.
+         const pauseVideoEl = document.querySelector('.pause');*/
+        const timePicker = document.getElementById('timer');
+        const ppbutton = document.querySelector(".vidbutton");
+        const timingEl = document.querySelector('.timing');
+        const volumeEl = document.querySelector('.volume');
+        const currentTimeEl = document.querySelector('.currentTime');
+        const btnRewind = document.querySelector(".rewind");       // Получаем кнопки перемотки назад
+        const btnForward = document.querySelector(".forward");     // Получаем кнопку перемотки вперёд
+
+        videoEl.addEventListener('timeupdate', event => {
+            currentTimeEl.innerText = videoEl.currentTime;
+            timingEl.value = videoEl.currentTime / videoEl.duration * 100;  // продолжительность видеофайла
+        });
+
+        videoEl.addEventListener('timeupdate', function () {
+            timePicker.innerHTML = secondsToTime(videoEl.currentTime);
+        }, false);
+
+        volumeEl.addEventListener('click', () => {
+            videoEl.volume = volumeEl.value;
+        });
+
+        btnRewind.addEventListener('click', () => {     // Нажимаем на кнопку перемотать назад
+            videoEl.currentTime -= 2; // Уменьшаем время на 2 секунды
+        });
+
+        btnForward.addEventListener('click', () => {    // Нажимаем на кнопку перемотать вперёд
+            videoEl.currentTime += 2; // Увеличиваем время на 2 секунды
+        });
+
+        ppbutton.addEventListener("click", playPause);
+
+        function playPause() {
+            if (videoEl.paused) {
+                videoEl.play();
+                ppbutton.innerHTML = "Pause";
+            }
+            else {
+                videoEl.pause();
+                ppbutton.innerHTML = "Play";
+            }
+
+        }
+
+        // 2й вариант Player/Pause.
+
+        /* playVideoEl.addEventListener('click', function (e) {
+             if (videoEl.paused) {
+                 videoEl.play();
+             } else {
+                 videoEl.pause();
+             }
+         });
+         pauseVideoEl.addEventListener('click', function (e) {
+             console.log(videoEl.played);
+             console.log(videoEl.paused);
+             if (!videoEl.paused) {
+                 videoEl.pause();
+             } else {
+                 videoEl.play();
+             }
+         });*/
+
+        // рассчет отображаемого времени
+        function secondsToTime(time) {
+
+            var h = Math.floor(time / (60 * 60)),
+                dm = time % (60 * 60),
+                m = Math.floor(dm / 60),
+                ds = dm % 60,
+                s = Math.ceil(ds);
+            if (s === 60) {
+                s = 0;
+                m = m + 1;
+            }
+            if (s < 10) {
+                s = '0' + s;
+            }
+            if (m === 60) {
+                m = 0;
+                h = h + 1;
+            }
+            if (m < 10) {
+                m = '0' + m;
+            }
+            if (h === 0) {
+                fulltime = m + ':' + s;
+            } else {
+                fulltime = h + ':' + m + ':' + s;
+            }
+            return fulltime;
+        }
+
+
+
+    </script>
+</body>
+
+</html>
+
+
+
+______________________CSS_______________________
+
+
+body {
+    background-color: rgb(160, 250, 250);
+}
+
+.videoplayer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.controls {
+    text-align: center;
+}
+
+.play {
+    background-color: rgb(243, 253, 152);
+    width: 30px;
+}
+
+.pause {
+    background-color: rgb(243, 253, 152);
+    width: 30px;
+}
+
+.timing {
+
+    width: 150px;
+}
+
+.rewind {
+    color: rgb(5, 90, 201);
+    background-color: rgb(243, 253, 152);
+    border-radius: 1ch;
+    border: 2px solid;
+}
+
+.forward {
+    color: rgb(5, 90, 201);
+    background-color: rgb(243, 253, 152);
+    border-radius: 1ch;
+    border: 2px solid;
+}
+
+.volume {
+    background-color: rgb(243, 253, 152);
+}

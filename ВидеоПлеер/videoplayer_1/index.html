@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="videoplayer">
+        <div style="text-align:center">
+
+            <video id="myvid" width="800" loop autoplay preload="true">
+                <source
+                    src="https://mazwai.com/videvo_files/video/free/2017-12/small_watermarked/171124_C1_HD_012_preview.webm"
+                    type="video/mp4">
+
+                <span class="currentTime"></span>
+            </video>
+            <div>Текущее время: <span id="timer">00:00</span></div> <!-- Таймер -->
+            <br>
+            <div class="controls">
+
+                <button id="vidbutton" class="vidbutton">Play</button>
+                <input type="range" class="timing" min="1" step="0.001"> <!-- Ползунок -->
+
+            </div>
+        </div>
+    </div>
+    <script>
+        myVideo = document.getElementById("myvid");
+        const ppbutton = document.getElementById("vidbutton");
+        timePicker = document.getElementById('timer');
+        const timingEl = document.querySelector('.timing');
+        const currentTimeEl = document.querySelector('.currentTime');
+
+
+        myVideo.addEventListener('timeupdate', event => {
+            currentTimeEl.innerText = myVideo.currentTime;
+            timingEl.value = myVideo.currentTime / myVideo.duration * 100;  // продолжительность видеофайла
+        });
+
+        myVideo.addEventListener('timeupdate', function () {
+            timePicker.innerHTML = secondsToTime(myVideo.currentTime);
+        }, false);
+
+        ppbutton.addEventListener("click", playPause);
+
+        function playPause() {
+            if (myVideo.paused) {
+                myVideo.play();
+                ppbutton.innerHTML = "Pause";
+            }
+            else {
+                myVideo.pause();
+                ppbutton.innerHTML = "Play";
+            }
+        }
+
+        // рассчет отображаемого времени
+        function secondsToTime(time) {
+
+            var h = Math.floor(time / (60 * 60)),
+                dm = time % (60 * 60),
+                m = Math.floor(dm / 60),
+                ds = dm % 60,
+                s = Math.ceil(ds);
+            if (s === 60) {
+                s = 0;
+                m = m + 1;
+            }
+            if (s < 10) {
+                s = '0' + s;
+            }
+            if (m === 60) {
+                m = 0;
+                h = h + 1;
+            }
+            if (m < 10) {
+                m = '0' + m;
+            }
+            if (h === 0) {
+                fulltime = m + ':' + s;
+            } else {
+                fulltime = h + ':' + m + ':' + s;
+            }
+            return fulltime;
+        }
+    </script>
+</body>
+
+</html>

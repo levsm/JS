@@ -1,0 +1,13 @@
+.fa-play {
+    margin-top: 20px;
+    color: rgb(255, 16, 16);
+}
+
+.fa-pause {
+    margin-top: 20px;
+    background-color: rgb(75, 236, 26);
+}
+
+.volume {
+    background-color: red;
+}

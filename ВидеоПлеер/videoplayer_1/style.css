@@ -1,0 +1,21 @@
+body {
+background-color: rgb(160, 248, 248);
+}
+
+.videoplayer {
+    padding-top: 50px;
+}
+
+.vidbutton {
+    color: aliceblue;
+    background-color: blue;
+    height: 30px;
+    width: 50px;
+    border-radius: 1ch;
+    border: 2px solid;
+
+}
+
+.vidbutton:hover {
+    background-color: #fa4949;
+  }
